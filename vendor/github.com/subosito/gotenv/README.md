@@ -1,12 +1,11 @@
 # gotenv
 
-Load environment variables dynamically in Go.
+[![Build Status](https://travis-ci.org/subosito/gotenv.svg?branch=master)](https://travis-ci.org/subosito/gotenv)
+[![Coverage Status](https://img.shields.io/codecov/c/github/subosito/gotenv/master.svg?maxAge=2592000)](https://codecov.io/gh/subosito/gotenv)
+[![Go Report Card](https://goreportcard.com/badge/subosito/gotenv)](https://goreportcard.com/report/subosito/gotenv)
+[![GoDoc](https://godoc.org/github.com/subosito/gotenv?status.svg)](https://godoc.org/github.com/subosito/gotenv)
 
-|-              | -                                                  |
-|---------------|----------------------------------------------------|
-| Build Status  | [![Build Status][drone-img]][drone-url]            |
-| Coverage      | [![Coverage Status][coveralls-img]][coveralls-url] |
-| Documentation | http://godoc.org/github.com/subosito/gotenv        |
+Load environment variables dynamically in Go.
 
 ## Installation
 
@@ -21,6 +20,13 @@ Store your configuration to `.env` file on your root directory of your project:
 ```
 APP_ID=1234567
 APP_SECRET=abcdef
+```
+
+You may also add `export` in front of each line so you can `source` the file in bash:
+
+```bash
+export APP_ID=1234567
+export APP_SECRET=abcdef
 ```
 
 Put the gotenv package on your `import` statement:
@@ -84,19 +90,6 @@ pairs = gotenv.Parse(strings.NewReader(`FOO="bar"`))
 
 Parse ignores invalid lines and returns `Env` of valid environment variables.
 
-### Formats
-
-The gotenv supports various format for defining environment variables. You can see more about it on:
-
-- [fixtures](./fixtures)
-- [gotenv_test.go](./gotenv_test.go)
-
 ## Notes
 
 The gotenv package is a Go port of [`dotenv`](https://github.com/bkeepers/dotenv) project. Most logic and regexp pattern is taken from there and aims will be compatible as close as possible.
-
-[drone-img]: https://drone.io/github.com/subosito/gotenv/status.png
-[drone-url]: https://drone.io/github.com/subosito/gotenv/latest
-[coveralls-img]: https://coveralls.io/repos/subosito/gotenv/badge.png?branch=master
-[coveralls-url]: https://coveralls.io/r/subosito/gotenv?branch=master
-
